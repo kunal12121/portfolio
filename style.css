@@ -1636,8 +1636,8 @@ input:checked+.slider:before {
     .scroll-indicator {
         position: relative;
         bottom: auto;
-        left: auto;
-        transform: none;
+        left: 50%;
+        transform: translateX(-50%);
         margin-top: 50px;
     }
 }
