@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="landing">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <!-- Backgrounds -->
     <canvas id="particle-canvas"></canvas>
@@ -25,6 +29,7 @@
         <!-- Left Side: Business -->
         <div class="split-side left-side" id="btn-business">
             <div class="split-content">
+                <img src="assets/images/kunal_business.png" alt="Kunal Jangid Business" class="profile-avatar">
                 <i class="fas fa-chart-line split-icon"></i>
                 <h2>BUSINESS PROFILE</h2>
                 <p>Operations Management & Strategic Leadership</p>
@@ -32,10 +37,12 @@
             </div>
             <div class="split-bg business-bg"></div>
         </div>
-        
+
         <!-- Right Side: Creative -->
         <div class="split-side right-side" id="btn-creative">
             <div class="split-content">
+                <img src="assets/images/kunal_creative.png" alt="Kunal Jangid Creative"
+                    class="profile-avatar avatar-glow">
                 <i class="fas fa-paint-brush split-icon glow-icon"></i>
                 <h2 class="glitch-text" data-text="CREATIVE WORLD">CREATIVE WORLD</h2>
                 <p class="neon-text">UX/UI, Graphic Design & Video Production</p>
@@ -52,11 +59,11 @@
 
     <!-- MAIN APPLICATION WRAPPER (Hidden initially) -->
     <main id="main-app" class="hidden">
-        
+
         <!-- Universal Navigation -->
         <nav class="universal-nav">
             <a href="#" class="logo" id="nav-logo">Kunal Jangid</a>
-            
+
             <div class="nav-center">
                 <!-- Theme Toggle Switch -->
                 <div class="theme-switch-wrapper">
@@ -72,7 +79,8 @@
             <ul class="nav-links">
                 <li><a href="#summary" class="nav-link">Summary</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li id="nav-portfolio-link" style="display:none;"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li id="nav-portfolio-link" style="display:none;"><a href="#portfolio" class="nav-link">Portfolio</a>
+                </li>
                 <li id="nav-experience-link"><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -96,22 +104,28 @@
         <!-- BUSINESS MODE CONTENT -->
         <!-- ============================================== -->
         <div id="business-content" class="mode-section">
-            
+
             <!-- Summary (Business) -->
             <section id="summary" class="container reveal">
                 <div class="section-title-clean">
                     <h2>Professional Summary</h2>
                     <div class="title-underline"></div>
                 </div>
-                
+
                 <div class="card-layout-clean">
                     <div class="text-card-clean">
-                        <p class="lead-text">Strategic Operations Manager dedicated to building scalable systems and optimizing business workflows.</p>
-                        <p>With hands-on experience directing manufacturing facilities (UV Printing) and large-scale infrastructure projects (Solar Energy), I specialize in bridging the gap between strategic planning and day-to-day execution.</p>
-                        <p>My background in Psychology empowers me to effectively manage cross-functional teams, negotiate with vendors, and understand consumer behavior patterns to drive business growth.</p>
-                        <p><strong>Core Focus:</strong> Operational Efficiency, Vendor Management, Team Leadership, and Process Automation.</p>
+                        <p class="lead-text">Strategic Operations Manager dedicated to building scalable systems and
+                            optimizing business workflows.</p>
+                        <p>With hands-on experience directing manufacturing facilities (UV Printing) and large-scale
+                            infrastructure projects (Solar Energy), I specialize in bridging the gap between strategic
+                            planning and day-to-day execution.</p>
+                        <p>My background in Psychology empowers me to effectively manage cross-functional teams,
+                            negotiate with vendors, and understand consumer behavior patterns to drive business growth.
+                        </p>
+                        <p><strong>Core Focus:</strong> Operational Efficiency, Vendor Management, Team Leadership, and
+                            Process Automation.</p>
                     </div>
-                    
+
                     <div class="stats-dashboard">
                         <div class="dash-stat">
                             <span class="dash-num">4+</span>
@@ -187,13 +201,18 @@
                                 <h4>Responsibilities & Execution:</h4>
                                 <ul class="bullet-list">
                                     <li>Directed the complete operational structure of the manufacturing unit.</li>
-                                    <li>Orchestrated production workflows, ensuring timely fulfillment of custom orders.</li>
-                                    <li>Developed pricing structures and accurate cost estimation models to ensure profitability.</li>
-                                    <li>Coordinated between design, production, and delivery teams to prevent bottlenecks.</li>
+                                    <li>Orchestrated production workflows, ensuring timely fulfillment of custom orders.
+                                    </li>
+                                    <li>Developed pricing structures and accurate cost estimation models to ensure
+                                        profitability.</li>
+                                    <li>Coordinated between design, production, and delivery teams to prevent
+                                        bottlenecks.</li>
                                 </ul>
                                 <div class="learnings-box">
                                     <strong><i class="fas fa-lightbulb text-primary"></i> Key Learnings:</strong>
-                                    <p>Mastered lean manufacturing principles and the art of balancing high-volume production with custom-quality expectations. Developed deep resilience in supply-chain troubleshooting.</p>
+                                    <p>Mastered lean manufacturing principles and the art of balancing high-volume
+                                        production with custom-quality expectations. Developed deep resilience in
+                                        supply-chain troubleshooting.</p>
                                 </div>
                             </div>
                         </div>
@@ -210,13 +229,18 @@
                             <div class="exp-body">
                                 <h4>Responsibilities & Execution:</h4>
                                 <ul class="bullet-list">
-                                    <li>Spearheaded solar project workflows from initial survey and planning to final installation.</li>
-                                    <li>Maintained rigorous project documentation, scheduling, and compliance records.</li>
-                                    <li>Liaised directly with vendors, external technicians, suppliers, and highly-demanding clients.</li>
+                                    <li>Spearheaded solar project workflows from initial survey and planning to final
+                                        installation.</li>
+                                    <li>Maintained rigorous project documentation, scheduling, and compliance records.
+                                    </li>
+                                    <li>Liaised directly with vendors, external technicians, suppliers, and
+                                        highly-demanding clients.</li>
                                 </ul>
                                 <div class="learnings-box">
                                     <strong><i class="fas fa-lightbulb text-primary"></i> Key Learnings:</strong>
-                                    <p>Acquired robust project management frameworks. Learned how to mitigate risks associated with hardware installations and how to manage large-scale stakeholder expectations.</p>
+                                    <p>Acquired robust project management frameworks. Learned how to mitigate risks
+                                        associated with hardware installations and how to manage large-scale stakeholder
+                                        expectations.</p>
                                 </div>
                             </div>
                         </div>
@@ -234,12 +258,16 @@
                                 <h4>Responsibilities & Execution:</h4>
                                 <ul class="bullet-list">
                                     <li>Built automation workflows to reduce manual administrative tasks.</li>
-                                    <li>Integrated design, technology, and marketing strategies to launch digital products.</li>
-                                    <li>Experimented with and deployed AI productivity systems to scale operations for small businesses.</li>
+                                    <li>Integrated design, technology, and marketing strategies to launch digital
+                                        products.</li>
+                                    <li>Experimented with and deployed AI productivity systems to scale operations for
+                                        small businesses.</li>
                                 </ul>
                                 <div class="learnings-box">
                                     <strong><i class="fas fa-lightbulb text-primary"></i> Key Learnings:</strong>
-                                    <p>Realized the compounding value of automation in business. Gained technical literacy allowing seamless communication with both developers and operational staff.</p>
+                                    <p>Realized the compounding value of automation in business. Gained technical
+                                        literacy allowing seamless communication with both developers and operational
+                                        staff.</p>
                                 </div>
                             </div>
                         </div>
@@ -254,21 +282,25 @@
         <!-- CREATIVE MODE CONTENT -->
         <!-- ============================================== -->
         <div id="creative-content" class="mode-section hidden-section">
-            
+
             <!-- Summary (Creative) -->
             <section id="summary-creative" class="container reveal">
                 <div class="section-header-cyber">
                     <span class="section-id">01 //</span>
                     <h2>CREATIVE<span class="accent">_</span>CORE</h2>
                 </div>
-                
+
                 <div class="about-grid">
                     <div class="glass-card about-text">
-                        <p>I am a multidisciplinary digital artist and UX/UI designer focused on crafting visually stunning, highly converted digital experiences.</p>
-                        <p>Leveraging a profound understanding of human psychology, I design interfaces and marketing visuals that not only look futuristic but are engineered to influence consumer behavior and drive engagement.</p>
-                        <p class="highlight-text">Versed in brand identity, cinematic video production, and AI-assisted design workflows.</p>
+                        <p>I am a multidisciplinary digital artist and UX/UI designer focused on crafting visually
+                            stunning, highly converted digital experiences.</p>
+                        <p>Leveraging a profound understanding of human psychology, I design interfaces and marketing
+                            visuals that not only look futuristic but are engineered to influence consumer behavior and
+                            drive engagement.</p>
+                        <p class="highlight-text">Versed in brand identity, cinematic video production, and AI-assisted
+                            design workflows.</p>
                     </div>
-                    
+
                     <div class="stats-grid">
                         <div class="stat-card glass-card hover-glow">
                             <i class="fas fa-paint-brush"></i>
@@ -301,10 +333,26 @@
                     <div class="skill-category glass-card hover-glow">
                         <h3><i class="fas fa-palette accent"></i> Graphic & UI Design</h3>
                         <ul class="skill-list-cyber">
-                            <li><span class="skill-name">Brand Identity Design</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
-                            <li><span class="skill-name">User Interface Design</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="90%"></div></div></li>
-                            <li><span class="skill-name">Marketing Visuals</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
-                            <li><span class="skill-name">Interaction Design</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
+                            <li><span class="skill-name">Brand Identity Design</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="95%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name">User Interface Design</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="90%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name">Marketing Visuals</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="85%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name">Interaction Design</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="85%"></div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -312,10 +360,26 @@
                     <div class="skill-category glass-card hover-glow">
                         <h3><i class="fas fa-video accent"></i> Motion & Media</h3>
                         <ul class="skill-list-cyber">
-                            <li><span class="skill-name">Cinematic Video Editing</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="90%"></div></div></li>
-                            <li><span class="skill-name">Visual Storytelling</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
-                            <li><span class="skill-name">Short-form Content</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
-                            <li><span class="skill-name">AI Content Generation</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
+                            <li><span class="skill-name">Cinematic Video Editing</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="90%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name">Visual Storytelling</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="85%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name">Short-form Content</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="95%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name">AI Content Generation</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="95%"></div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -323,10 +387,27 @@
                     <div class="skill-category glass-card hover-glow software-tools">
                         <h3><i class="fas fa-laptop-code accent"></i> Software & Tools</h3>
                         <ul class="skill-list-cyber tools-list">
-                            <li><span class="skill-name"><i class="fas fa-video"></i> Premiere Pro & After Effects</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="90%"></div></div></li>
-                            <li><span class="skill-name"><i class="fas fa-film"></i> DaVinci Resolve</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
-                            <li><span class="skill-name"><i class="fas fa-palette"></i> Illustrator & Photoshop</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="90%"></div></div></li>
-                            <li><span class="skill-name"><i class="fas fa-pen-nib"></i> Canva & AI Platforms</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
+                            <li><span class="skill-name"><i class="fas fa-video"></i> Premiere Pro & After
+                                    Effects</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="90%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name"><i class="fas fa-film"></i> DaVinci Resolve</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="85%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name"><i class="fas fa-palette"></i> Illustrator & Photoshop</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="90%"></div>
+                                </div>
+                            </li>
+                            <li><span class="skill-name"><i class="fas fa-pen-nib"></i> Canva & AI Platforms</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0" data-width="95%"></div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -344,7 +425,8 @@
                     <!-- Cards will be injected here by script.js using portfolio-data.js -->
                 </div>
 
-                <h3 class="subsection-title glow-text" style="margin-top: 50px;"><i class="fas fa-film"></i> CINEMATIC SHOWREEL</h3>
+                <h3 class="subsection-title glow-text" style="margin-top: 50px;"><i class="fas fa-film"></i> CINEMATIC
+                    SHOWREEL</h3>
                 <div class="video-grid" id="video-edits-grid">
                     <!-- Video Cards will be injected here by script.js using portfolio-data.js -->
                 </div>
@@ -357,23 +439,25 @@
         <!-- SHARED BOTTOM CONTENT -->
         <!-- ============================================== -->
         <div id="shared-content">
-            
+
             <section class="container reveal dual-columns margin-top-auto">
                 <div class="edu-module theme-adapt-card hover-lift">
                     <h3><i class="fas fa-graduation-cap icon-adapt"></i> EDUCATION & CERTIFICATIONS</h3>
                     <div class="edu-item">
                         <h4>Bachelor of Arts (Honours) – Psychology</h4>
-                        <p class="text-adapt">Understanding human behavior, consumer psychology, & cognitive decision-making.</p>
+                        <p class="text-adapt">Understanding human behavior, consumer psychology, & cognitive
+                            decision-making.</p>
                     </div>
                     <div class="edu-item mt-3">
                         <h4>Google UX/UI Design Professional Certificate</h4>
                         <p class="text-adapt">Wireframing, prototyping, and user-centric problem solving.</p>
                     </div>
                 </div>
-                
+
                 <div class="interests-module theme-adapt-card hover-lift">
                     <h3><i class="fas fa-star icon-adapt"></i> UNIQUE ADVANTAGE</h3>
-                    <p class="text-adapt mb-3">Combining an entrepreneurial mindset with psychological insight and technical execution.</p>
+                    <p class="text-adapt mb-3">Combining an entrepreneurial mindset with psychological insight and
+                        technical execution.</p>
                     <ul class="list-adapt">
                         <li>Human Behavior & Consumer Research</li>
                         <li>Creative Problem Solving with Business Logic</li>
@@ -393,8 +477,9 @@
                 <div class="contact-layout centered-contact">
                     <div class="contact-info theme-adapt-card text-center">
                         <h3>Let's Connect</h3>
-                        <p class="text-adapt mb-4">Open to strategic operations roles, creative projects, or a unique blend of both.</p>
-                        
+                        <p class="text-adapt mb-4">Open to strategic operations roles, creative projects, or a unique
+                            blend of both.</p>
+
                         <div class="contact-methods centered-methods">
                             <a href="mailto:kunalsuthar098@email.com" class="contact-method theme-link">
                                 <i class="fas fa-envelope icon-adapt"></i>
@@ -404,7 +489,8 @@
                                 <i class="fas fa-phone icon-adapt"></i>
                                 <span>+91 6376173461</span>
                             </a>
-                            <a href="https://www.behance.net/kunaljangid" target="_blank" class="contact-method theme-link">
+                            <a href="https://www.behance.net/kunaljangid" target="_blank"
+                                class="contact-method theme-link">
                                 <i class="fab fa-behance icon-adapt"></i>
                                 <span>Behance Portfolio</span>
                             </a>
@@ -432,7 +518,8 @@
 
 
     <!-- Scripts -->
-    <script src="portfolio-data.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/portfolio-data.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

@@ -12,7 +12,7 @@ const portfolioData = {
             id: "img1-src", // Must be unique for the pop-up modal to work
             title: "Cyberpunk Branding",
             category: "Brand Identity",
-            image: "graphic.png",
+            image: "assets/images/graphic.png",
             fallbackImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
             description: "Futuristic visual branding system with glowing aesthetics and bold typography."
         },
@@ -50,7 +50,7 @@ const portfolioData = {
         {
             title: "Cinematic Travel Film",
             description: "Visual storytelling focused on cultural exploration with dramatic neon lighting.",
-            thumbnail: "video.png",
+            thumbnail: "assets/images/video.png",
             fallbackThumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=600&auto=format&fit=crop"
         },
         {
