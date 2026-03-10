@@ -1627,6 +1627,19 @@ input:checked+.slider:before {
     .stats-grid {
         grid-template-columns: 1fr;
     }
+
+    .hero-section {
+        min-height: 100vh;
+        padding-bottom: 80px;
+    }
+
+    .scroll-indicator {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 50px;
+    }
 }
 
 /* =========================================
