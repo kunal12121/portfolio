@@ -351,6 +351,14 @@ body {
     transition: background var(--transition-speed), border-color var(--transition-speed), padding 0.3s ease;
 }
 
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
 .logo {
     font-size: 1.4rem;
     font-weight: 800;
@@ -837,6 +845,7 @@ input:checked+.slider:before {
     margin-bottom: 40px;
     border-bottom: 1px solid var(--surface-border);
     padding-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .section-id {
@@ -848,10 +857,13 @@ input:checked+.slider:before {
 
 .section-header-cyber h2 {
     font-family: 'Orbitron';
-    font-size: 2.2rem;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     text-transform: uppercase;
     color: #fff;
     letter-spacing: 2px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .accent {
@@ -1586,7 +1598,16 @@ input:checked+.slider:before {
     }
 
     .nav-center {
-        display: none;
+        display: flex;
+        position: static;
+        transform: none;
+        margin-top: 15px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .universal-nav {
+        flex-wrap: wrap;
     }
 
     .gallery-item,
