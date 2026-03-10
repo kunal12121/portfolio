@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="landing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunal Jangid | Multidisciplinary Professional</title>
+    <meta name="description" content="Dual-mode portfolio for Kunal Jangid: Business Operations & Creative Direction.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Backgrounds -->
+    <canvas id="particle-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress"></div>
+
+    <!-- 1. SPLIT HOLDING SCREEN -->
+    <div id="split-landing" class="split-container">
+        <!-- Left Side: Business -->
+        <div class="split-side left-side" id="btn-business">
+            <div class="split-content">
+                <i class="fas fa-chart-line split-icon"></i>
+                <h2>BUSINESS PROFILE</h2>
+                <p>Operations Management & Strategic Leadership</p>
+                <div class="btn-clean">ENTER PROFILE</div>
+            </div>
+            <div class="split-bg business-bg"></div>
+        </div>
+        
+        <!-- Right Side: Creative -->
+        <div class="split-side right-side" id="btn-creative">
+            <div class="split-content">
+                <i class="fas fa-paint-brush split-icon glow-icon"></i>
+                <h2 class="glitch-text" data-text="CREATIVE WORLD">CREATIVE WORLD</h2>
+                <p class="neon-text">UX/UI, Graphic Design & Video Production</p>
+                <div class="btn-glow"><span>ENTER WORLD</span></div>
+            </div>
+            <div class="split-bg creative-bg"></div>
+        </div>
+
+        <div class="center-brand">
+            <h1>KUNAL JANGID</h1>
+            <p>Select Your Experience</p>
+        </div>
+    </div>
+
+    <!-- MAIN APPLICATION WRAPPER (Hidden initially) -->
+    <main id="main-app" class="hidden">
+        
+        <!-- Universal Navigation -->
+        <nav class="universal-nav">
+            <a href="#" class="logo" id="nav-logo">Kunal Jangid</a>
+            
+            <div class="nav-center">
+                <!-- Theme Toggle Switch -->
+                <div class="theme-switch-wrapper">
+                    <span class="mode-label" id="label-business">Business</span>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="mode-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="mode-label" id="label-creative">Creative</span>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#summary" class="nav-link">Summary</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li id="nav-portfolio-link" style="display:none;"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li id="nav-experience-link"><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+
+        <!-- Dynamic Header -->
+        <header id="dynamic-header" class="hero-section">
+            <div class="hero-content container reveal">
+                <!-- Injected via JS based on mode -->
+                <h1 id="hero-title">KUNAL JANGID</h1>
+                <p id="hero-subtitle" class="subtitle"></p>
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                    <p>SCROLL TO EXPLORE</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================================== -->
+        <!-- BUSINESS MODE CONTENT -->
+        <!-- ============================================== -->
+        <div id="business-content" class="mode-section">
+            
+            <!-- Summary (Business) -->
+            <section id="summary" class="container reveal">
+                <div class="section-title-clean">
+                    <h2>Professional Summary</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="card-layout-clean">
+                    <div class="text-card-clean">
+                        <p class="lead-text">Strategic Operations Manager dedicated to building scalable systems and optimizing business workflows.</p>
+                        <p>With hands-on experience directing manufacturing facilities (UV Printing) and large-scale infrastructure projects (Solar Energy), I specialize in bridging the gap between strategic planning and day-to-day execution.</p>
+                        <p>My background in Psychology empowers me to effectively manage cross-functional teams, negotiate with vendors, and understand consumer behavior patterns to drive business growth.</p>
+                        <p><strong>Core Focus:</strong> Operational Efficiency, Vendor Management, Team Leadership, and Process Automation.</p>
+                    </div>
+                    
+                    <div class="stats-dashboard">
+                        <div class="dash-stat">
+                            <span class="dash-num">4+</span>
+                            <span class="dash-label">Years Experience</span>
+                        </div>
+                        <div class="dash-stat">
+                            <span class="dash-num">2</span>
+                            <span class="dash-label">Businesses Managed</span>
+                        </div>
+                        <div class="dash-stat">
+                            <span class="dash-num">100%</span>
+                            <span class="dash-label">Workflow Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Dashboard (Business) -->
+            <section id="skills" class="container reveal">
+                <div class="section-title-clean">
+                    <h2>Management Dashboard</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dash-card">
+                        <h3><i class="fas fa-tasks"></i> Operational Leadership</h3>
+                        <ul class="clean-list">
+                            <li>Production Workflow Management <span class="badge">Advanced</span></li>
+                            <li>Strategic Decision Making <span class="badge">Advanced</span></li>
+                            <li>Project Coordination <span class="badge">Expert</span></li>
+                            <li>Cross-functional Team Leadership <span class="badge">Expert</span></li>
+                        </ul>
+                    </div>
+                    <div class="dash-card">
+                        <h3><i class="fas fa-handshake"></i> Business Relations</h3>
+                        <ul class="clean-list">
+                            <li>Vendor & Supplier Management <span class="badge">Expert</span></li>
+                            <li>Client Relationship Handling <span class="badge">Advanced</span></li>
+                            <li>Contract Negotiation <span class="badge">Expert</span></li>
+                            <li>Customer Journey Optimization <span class="badge">Advanced</span></li>
+                        </ul>
+                    </div>
+                    <div class="dash-card">
+                        <h3><i class="fas fa-chart-pie"></i> Strategy & Systems</h3>
+                        <ul class="clean-list">
+                            <li>Pricing Strategy & Cost Estimation <span class="badge">Advanced</span></li>
+                            <li>Process Automation (AI tools) <span class="badge">Advanced</span></li>
+                            <li>Consumer Psychology Analysis <span class="badge">Expert</span></li>
+                            <li>Systems Integration <span class="badge">Advanced</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience & Learnings (Business) -->
+            <section id="experience" class="container reveal bg-light-alt">
+                <div class="section-title-clean">
+                    <h2>Professional Experience</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="clean-timeline">
+                    <!-- Experience 1 -->
+                    <div class="clean-timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="clean-timeline-content card-clean hover-lift">
+                            <div class="exp-header">
+                                <h3>Business Operations Manager</h3>
+                                <span class="company-name">The Craft Country – UV Printing Business</span>
+                            </div>
+                            <div class="exp-body">
+                                <h4>Responsibilities & Execution:</h4>
+                                <ul class="bullet-list">
+                                    <li>Directed the complete operational structure of the manufacturing unit.</li>
+                                    <li>Orchestrated production workflows, ensuring timely fulfillment of custom orders.</li>
+                                    <li>Developed pricing structures and accurate cost estimation models to ensure profitability.</li>
+                                    <li>Coordinated between design, production, and delivery teams to prevent bottlenecks.</li>
+                                </ul>
+                                <div class="learnings-box">
+                                    <strong><i class="fas fa-lightbulb text-primary"></i> Key Learnings:</strong>
+                                    <p>Mastered lean manufacturing principles and the art of balancing high-volume production with custom-quality expectations. Developed deep resilience in supply-chain troubleshooting.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="clean-timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="clean-timeline-content card-clean hover-lift">
+                            <div class="exp-header">
+                                <h3>Operations Manager</h3>
+                                <span class="company-name">VK Solar and Wind Energy Private Limited</span>
+                            </div>
+                            <div class="exp-body">
+                                <h4>Responsibilities & Execution:</h4>
+                                <ul class="bullet-list">
+                                    <li>Spearheaded solar project workflows from initial survey and planning to final installation.</li>
+                                    <li>Maintained rigorous project documentation, scheduling, and compliance records.</li>
+                                    <li>Liaised directly with vendors, external technicians, suppliers, and highly-demanding clients.</li>
+                                </ul>
+                                <div class="learnings-box">
+                                    <strong><i class="fas fa-lightbulb text-primary"></i> Key Learnings:</strong>
+                                    <p>Acquired robust project management frameworks. Learned how to mitigate risks associated with hardware installations and how to manage large-scale stakeholder expectations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3 (AI/Digital Strategy) -->
+                    <div class="clean-timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="clean-timeline-content card-clean hover-lift">
+                            <div class="exp-header">
+                                <h3>Digital Systems Integrator</h3>
+                                <span class="company-name">Independent Consultant</span>
+                            </div>
+                            <div class="exp-body">
+                                <h4>Responsibilities & Execution:</h4>
+                                <ul class="bullet-list">
+                                    <li>Built automation workflows to reduce manual administrative tasks.</li>
+                                    <li>Integrated design, technology, and marketing strategies to launch digital products.</li>
+                                    <li>Experimented with and deployed AI productivity systems to scale operations for small businesses.</li>
+                                </ul>
+                                <div class="learnings-box">
+                                    <strong><i class="fas fa-lightbulb text-primary"></i> Key Learnings:</strong>
+                                    <p>Realized the compounding value of automation in business. Gained technical literacy allowing seamless communication with both developers and operational staff.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- END BUSINESS MODE -->
+
+
+        <!-- ============================================== -->
+        <!-- CREATIVE MODE CONTENT -->
+        <!-- ============================================== -->
+        <div id="creative-content" class="mode-section hidden-section">
+            
+            <!-- Summary (Creative) -->
+            <section id="summary-creative" class="container reveal">
+                <div class="section-header-cyber">
+                    <span class="section-id">01 //</span>
+                    <h2>CREATIVE<span class="accent">_</span>CORE</h2>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="glass-card about-text">
+                        <p>I am a multidisciplinary digital artist and UX/UI designer focused on crafting visually stunning, highly converted digital experiences.</p>
+                        <p>Leveraging a profound understanding of human psychology, I design interfaces and marketing visuals that not only look futuristic but are engineered to influence consumer behavior and drive engagement.</p>
+                        <p class="highlight-text">Versed in brand identity, cinematic video production, and AI-assisted design workflows.</p>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card hover-glow">
+                            <i class="fas fa-paint-brush"></i>
+                            <h3 style="font-size: 1.5rem" class="counter">0</h3>
+                            <p>Graphic Design</p>
+                        </div>
+                        <div class="stat-card glass-card hover-glow">
+                            <i class="fas fa-film"></i>
+                            <h3 style="font-size: 1.5rem" class="counter">0</h3>
+                            <p>Video Edits</p>
+                        </div>
+                        <div class="stat-card glass-card hover-glow">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3 style="font-size: 1.5rem" class="counter">0</h3>
+                            <p>UI Concepts</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills (Creative) -->
+            <section id="skills-creative" class="container reveal">
+                <div class="section-header-cyber">
+                    <span class="section-id">02 //</span>
+                    <h2>DIGITAL<span class="accent">_</span>ARSENAL</h2>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Design -->
+                    <div class="skill-category glass-card hover-glow">
+                        <h3><i class="fas fa-palette accent"></i> Graphic & UI Design</h3>
+                        <ul class="skill-list-cyber">
+                            <li><span class="skill-name">Brand Identity Design</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
+                            <li><span class="skill-name">User Interface Design</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="90%"></div></div></li>
+                            <li><span class="skill-name">Marketing Visuals</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
+                            <li><span class="skill-name">Interaction Design</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
+                        </ul>
+                    </div>
+
+                    <!-- Video -->
+                    <div class="skill-category glass-card hover-glow">
+                        <h3><i class="fas fa-video accent"></i> Motion & Media</h3>
+                        <ul class="skill-list-cyber">
+                            <li><span class="skill-name">Cinematic Video Editing</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="90%"></div></div></li>
+                            <li><span class="skill-name">Visual Storytelling</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div></li>
+                            <li><span class="skill-name">Short-form Content</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
+                            <li><span class="skill-name">AI Content Generation</span><div class="progress-bar"><div class="progress" style="width: 0" data-width="95%"></div></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio (Creative) -->
+            <section id="portfolio" class="container reveal">
+                <div class="section-header-cyber">
+                    <span class="section-id">03 //</span>
+                    <h2>VISUAL<span class="accent">_</span>ARCHIVES</h2>
+                </div>
+
+                <h3 class="subsection-title glow-text"><i class="fas fa-vector-square"></i> GRAPHIC DESIGN</h3>
+                <div class="gallery-grid" id="graphic-design-grid">
+                    <!-- Cards will be injected here by script.js using portfolio-data.js -->
+                </div>
+
+                <h3 class="subsection-title glow-text" style="margin-top: 50px;"><i class="fas fa-film"></i> CINEMATIC SHOWREEL</h3>
+                <div class="video-grid" id="video-edits-grid">
+                    <!-- Video Cards will be injected here by script.js using portfolio-data.js -->
+                </div>
+            </section>
+        </div>
+        <!-- END CREATIVE MODE -->
+
+
+        <!-- ============================================== -->
+        <!-- SHARED BOTTOM CONTENT -->
+        <!-- ============================================== -->
+        <div id="shared-content">
+            
+            <section class="container reveal dual-columns margin-top-auto">
+                <div class="edu-module theme-adapt-card hover-lift">
+                    <h3><i class="fas fa-graduation-cap icon-adapt"></i> EDUCATION & CERTIFICATIONS</h3>
+                    <div class="edu-item">
+                        <h4>Bachelor of Arts (Honours) – Psychology</h4>
+                        <p class="text-adapt">Understanding human behavior, consumer psychology, & cognitive decision-making.</p>
+                    </div>
+                    <div class="edu-item mt-3">
+                        <h4>Google UX/UI Design Professional Certificate</h4>
+                        <p class="text-adapt">Wireframing, prototyping, and user-centric problem solving.</p>
+                    </div>
+                </div>
+                
+                <div class="interests-module theme-adapt-card hover-lift">
+                    <h3><i class="fas fa-star icon-adapt"></i> UNIQUE ADVANTAGE</h3>
+                    <p class="text-adapt mb-3">Combining an entrepreneurial mindset with psychological insight and technical execution.</p>
+                    <ul class="list-adapt">
+                        <li>Human Behavior & Consumer Research</li>
+                        <li>Creative Problem Solving with Business Logic</li>
+                        <li>Fast Learning & Cross-functional Adaptability</li>
+                        <li>Emerging AI Technology Implementation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="container reveal">
+                <div class="section-title-adapt">
+                    <h2>Get In Touch</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="contact-layout">
+                    <div class="contact-info theme-adapt-card">
+                        <h3>Let's Connect</h3>
+                        <p class="text-adapt mb-4">Open to strategic operations roles, creative projects, or a unique blend of both.</p>
+                        
+                        <div class="contact-methods">
+                            <a href="mailto:kunalsuthar098@email.com" class="contact-method theme-link">
+                                <i class="fas fa-envelope icon-adapt"></i>
+                                <span>kunalsuthar098@email.com</span>
+                            </a>
+                            <a href="tel:+916376173461" class="contact-method theme-link">
+                                <i class="fas fa-phone icon-adapt"></i>
+                                <span>+91 6376173461</span>
+                            </a>
+                            <a href="https://www.behance.net/kunaljangid" target="_blank" class="contact-method theme-link">
+                                <i class="fab fa-behance icon-adapt"></i>
+                                <span>Behance Portfolio</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form theme-adapt-card">
+                        <form id="comm-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="theme-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="theme-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="4" class="theme-input" required></textarea>
+                            </div>
+                            <button type="button" class="btn-adapt full-width">
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="theme-footer">
+                <p>&copy; 2026 Kunal Jangid. Multidisciplinary Professional.</p>
+            </footer>
+        </div>
+
+    </main>
+
+    <!-- Image Modal (Creative Mode specific) -->
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Removed Interactive Character -->
+
+
+
+    <!-- Scripts -->
+    <script src="portfolio-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
