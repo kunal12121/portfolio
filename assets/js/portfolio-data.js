@@ -5,42 +5,56 @@
 const portfolioData = {
     // ----------------------------------------------------
     // 1. GRAPHIC DESIGN & UI CONCEPTS
-    // Add images to your folder and update the "image" link.
     // ----------------------------------------------------
     graphics: [
         {
-            id: "img1-src", // Must be unique for the pop-up modal to work
-            title: "Cyberpunk Branding",
-            category: "Brand Identity",
-            image: "assets/images/graphic.png",
-            fallbackImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
-            description: "Futuristic visual branding system with glowing aesthetics and bold typography."
-        },
-        {
-            id: "img2-src",
-            title: "Neon Campaign",
-            category: "Marketing Visuals",
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop",
-            fallbackImage: "",
-            description: "Social media creative campaign driving engagement through dynamic visual storytelling."
-        },
-        {
-            id: "img3-src",
-            title: "UI Concept Alpha",
+            id: "img1-bucketroll-ui",
+            title: "Bucketroll App - UI",
             category: "UX/UI Design",
-            image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=600&auto=format&fit=crop",
-            fallbackImage: "",
-            description: "Dark-mode user interface design exploring glassmorphism and minimal interaction patterns."
+            image: "assets/images/portfolio/ux-ui/Bucketroll app/Bucketroll app.jpg",
+            fallbackImage: "assets/images/portfolio/ux-ui/Bucketroll app/Bucketroll.jpg",
+            description: "A comprehensive UI/UX case study and interface design for the Bucketroll application."
         },
         {
-            id: "img4-src",
-            title: "Fintech Dash",
+            id: "img2-helico",
+            title: "Helico Travel Booking",
             category: "UX/UI Concepts",
-            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop",
+            image: "assets/images/portfolio/ux-ui/Helico - a helicopter ride and travel booking app __ Behance/imgi_45_a5d3aa192556745.65ddcb89efe97.jpg",
             fallbackImage: "",
-            description: "Modern dashboard interface featuring data visualizations and sleek neon typography."
+            description: "Modern travel and helicopter ride booking app interface exploring seamless navigation patterns."
+        },
+        {
+            id: "img3-sipdrop",
+            title: "SipDrop Landing",
+            category: "UX/UI Concepts",
+            image: "assets/images/portfolio/ux-ui/SipDrop - The Ultimate Drink Delivery App __ Behance/imgi_49_46b280191116755.65c5c3642800d.jpg",
+            fallbackImage: "",
+            description: "Landing page and application interface concept for an ultimate drink delivery service."
+        },
+        {
+            id: "img4-bucketroll-brand",
+            title: "Bucketroll Branding",
+            category: "Brand Identity",
+            image: "assets/images/portfolio/graphic-design/brand identity/Bucketroll/cards.jpg",
+            fallbackImage: "assets/images/portfolio/graphic-design/brand identity/Bucketroll/logo new.png",
+            description: "Complete visual branding system, logo design, and brand merchandise exploration."
+        },
+        {
+            id: "img5-gluefree",
+            title: "Gluefree Drink",
+            category: "Brand Identity",
+            image: "assets/images/portfolio/graphic-design/brand identity/gluefree drink __ Behance/imgi_65_2b7f91220732647.67c84319e6629.jpg",
+            fallbackImage: "",
+            description: "Product packaging and comprehensive brand identity for an innovative beverage brand."
+        },
+        {
+            id: "img6-logos",
+            title: "Visual Archives",
+            category: "Logo Design",
+            image: "assets/images/portfolio/graphic-design/logo/7.jpg",
+            fallbackImage: "assets/images/portfolio/graphic-design/logo/1.jpg",
+            description: "A collection of standalone logos crafted for various industries and startups."
         }
-        // TO ADD MORE: Paste a new block here (don't forget the comma on the previous one!)
     ],
 
     // ----------------------------------------------------
