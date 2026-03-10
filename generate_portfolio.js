@@ -1,97 +1,94 @@
+/**
+ * generate_portfolio.js
+ * Generates assets/js/portfolio-data.js from the assets folder structure.
+ * Run with: node generate_portfolio.js
+ */
 const fs = require('fs');
 const path = require('path');
 
-const basePath = path.join(__dirname, 'assets');
+const base = __dirname;
 
-function getFiles(dir, exts) {
-    let results = [];
-    const list = fs.readdirSync(dir);
-    list.forEach(file => {
-        file = path.join(dir, file);
-        const stat = fs.statSync(file);
-        if (stat && stat.isDirectory()) {
-            results = results.concat(getFiles(file, exts));
-        } else {
-            const ext = path.extname(file).toLowerCase();
-            if (exts.includes(ext)) {
-                results.push(file);
-            }
-        }
-    });
-    return results;
+function getImages(dir) {
+    if (!fs.existsSync(dir)) return [];
+    const exts = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+    return fs.readdirSync(dir)
+        .filter(f => exts.includes(path.extname(f).toLowerCase()))
+        .map(f => ({
+            file: f,
+            path: path.join(dir, f).replace(base + path.sep, '').replace(/\\/g, '/')
+        }));
 }
 
-const uxUiDir = path.join(basePath, 'images/portfolio/ux-ui');
-const graphicDir = path.join(basePath, 'images/portfolio/graphic-design');
-const videoDir = path.join(basePath, 'videos/portfolio/video-edits');
+function getVideos(dir) {
+    if (!fs.existsSync(dir)) return [];
+    const exts = ['.mp4', '.webm', '.mov'];
+    return fs.readdirSync(dir)
+        .filter(f => exts.includes(path.extname(f).toLowerCase()))
+        .map(f => ({
+            name: path.basename(f, path.extname(f)),
+            path: path.join(dir, f).replace(base + path.sep, '').replace(/\\/g, '/')
+        }));
+}
 
-const imageExts = ['.jpg', '.jpeg', '.png', '.gif'];
-const videoExts = ['.mp4', '.webm', '.mov'];
+// ---- GRAPHIC DESIGN ----
+const graphicBase = path.join(base, 'assets/images/portfolio/graphic-design');
+const graphicCategories = fs.existsSync(graphicBase)
+    ? fs.readdirSync(graphicBase).filter(f => fs.statSync(path.join(graphicBase, f)).isDirectory())
+    : [];
 
-const uxUiFiles = fs.existsSync(uxUiDir) ? getFiles(uxUiDir, imageExts) : [];
-const graphicFiles = fs.existsSync(graphicDir) ? getFiles(graphicDir, imageExts) : [];
-const videoFiles = fs.existsSync(videoDir) ? getFiles(videoDir, videoExts) : [];
+const graphicDesign = graphicCategories.map(cat => {
+    const catPath = path.join(graphicBase, cat);
+    const subDirs = fs.readdirSync(catPath).filter(f => fs.statSync(path.join(catPath, f)).isDirectory());
 
-let graphicsData = [];
-let idCounter = 1;
-
-uxUiFiles.forEach(file => {
-    const relativePath = file.split('assets\\').pop().replace(/\\/g, '/');
-    const filename = path.basename(file, path.extname(file));
-    let folder = path.basename(path.dirname(file));
-    graphicsData.push({
-        id: `img-${idCounter++}`,
-        title: filename,
-        category: `UX/UI: ${folder}`,
-        image: `assets/${relativePath}`,
-        fallbackImage: '',
-        description: `UX/UI Design: ${filename}`
+    const projects = subDirs.map(proj => {
+        const projPath = path.join(catPath, proj);
+        const images = getImages(projPath);
+        return {
+            name: proj,
+            images
+        };
     });
+
+    // Also include any images directly in the category folder (e.g. logo)
+    const directImages = getImages(catPath);
+    if (directImages.length > 0 && projects.length === 0) {
+        projects.push({ name: cat, images: directImages });
+    }
+
+    return { category: cat, projects };
 });
 
-graphicFiles.forEach(file => {
-    const relativePath = file.split('assets\\').pop().replace(/\\/g, '/');
-    const filename = path.basename(file, path.extname(file));
-    let folder = path.basename(path.dirname(file));
-    graphicsData.push({
-        id: `img-${idCounter++}`,
-        title: filename,
-        category: `Graphic Design: ${folder}`,
-        image: `assets/${relativePath}`,
-        fallbackImage: '',
-        description: `Graphic Design: ${filename}`
-    });
+// ---- UX/UI ----
+const uxBase = path.join(base, 'assets/images/portfolio/ux-ui');
+const uxDirs = fs.existsSync(uxBase)
+    ? fs.readdirSync(uxBase).filter(f => fs.statSync(path.join(uxBase, f)).isDirectory())
+    : [];
+
+const uxUi = uxDirs.map(proj => {
+    const projPath = path.join(uxBase, proj);
+    const images = getImages(projPath);
+    return { name: proj, images };
 });
 
-let videosData = [];
-let vidIdCounter = 1;
+// ---- VIDEOS ----
+const videoBase = path.join(base, 'assets/videos/portfolio/video-edits');
+const videos = getVideos(videoBase);
 
-videoFiles.forEach(file => {
-    const relativePath = file.split('assets\\').pop().replace(/\\/g, '/');
-    const filename = path.basename(file, path.extname(file));
-    videosData.push({
-        id: `vid-${vidIdCounter++}`,
-        title: filename,
-        description: `Video edit: ${filename}`,
-        // We use the video path directly as the video source. Let's add videoSrc.
-        thumbnail: '', // We don't have thumbnails generated, could use a placeholder or empty
-        videoSrc: `assets/${relativePath}`
-    });
-});
+// Output
+const output = `// portfolio-data.js — Auto-generated by generate_portfolio.js
+// Run "node generate_portfolio.js" to regenerate when adding new assets.
 
-const fileContent = `const portfolioData = {
-    // ----------------------------------------------------
-    // 1. GRAPHIC DESIGN & UI CONCEPTS
-    // ----------------------------------------------------
-    graphics: ${JSON.stringify(graphicsData, null, 4)},
-
-    // ----------------------------------------------------
-    // 2. CINEMATIC SHOWREEL (VIDEOS)
-    // ----------------------------------------------------
-    videos: ${JSON.stringify(videosData, null, 4)}
+const portfolioData = {
+    graphicDesign: ${JSON.stringify(graphicDesign, null, 4)},
+    uxUi: ${JSON.stringify(uxUi, null, 4)},
+    videos: ${JSON.stringify(videos, null, 4)}
 };
 if (typeof module !== 'undefined' && module.exports) module.exports = portfolioData;
 `;
 
-fs.writeFileSync(path.join(__dirname, 'assets/js/portfolio-data.js'), fileContent);
-console.log(`Generated ${graphicsData.length} graphics and ${videosData.length} videos.`);
+fs.writeFileSync(path.join(base, 'assets/js/portfolio-data.js'), output);
+console.log(`Generated: ${graphicDesign.length} graphic categories, ${uxUi.length} UX projects, ${videos.length} videos.`);
+graphicDesign.forEach(cat => {
+    console.log(`  Graphic → ${cat.category}: ${cat.projects.map(p => p.name + '(' + p.images.length + ' imgs)').join(', ')}`);
+});
+uxUi.forEach(p => console.log(`  UX/UI → ${p.name}: ${p.images.length} images`));

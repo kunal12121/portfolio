@@ -306,57 +306,143 @@ document.addEventListener('DOMContentLoaded', () => {
         videoModal.addEventListener('click', (e) => { if (e.target === videoModal) { videoModal.classList.remove('open'); modalVideo.pause(); modalVideo.src = ''; } });
     }
 
-    // ---- PORTFOLIO DATA RENDERING ----
+    // ---- PORTFOLIO DATA RENDERING (FOLDER-WINDOW SYSTEM) ----
+    function escStr(s) { return (s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
+
     function renderPortfolio() {
-        if (typeof portfolioData === 'undefined') {
-            console.error("portfolioData is not defined. Make sure portfolio-data.js is linked before script.js.");
-            return;
-        }
+        if (typeof portfolioData === 'undefined') return;
+        renderGraphicDesign();
+        renderUxUi();
+        renderVideos();
+    }
 
-        // Render Graphic Design Grid
-        const graphicGrid = document.getElementById('graphic-design-grid');
-        if (graphicGrid && portfolioData.graphics) {
-            let graphicHTML = '';
-            portfolioData.graphics.forEach(item => {
-                const title = item.title.replace(/'/g, "\\'");
-                const desc = item.description.replace(/'/g, "\\'");
-                graphicHTML += `
-                    <div class="gallery-item glass-card" onclick="openModal('${item.image}', '${title}', '${desc}')">
-                        <div class="item-overlay"></div>
-                        <img src="${item.image}" alt="${item.category}" loading="lazy" onerror="this.src='${item.fallbackImage || ''}'">
-                        <div class="item-info">
-                            <h4>${item.title}</h4>
-                            <p>${item.category}</p>
-                        </div>
-                    </div>
-                `;
+    // ---- GRAPHIC DESIGN: Category → Project folders → Image grid ----
+    const graphicGrid = document.getElementById('graphic-design-grid');
+
+    function renderGraphicDesign(catIndex = null, projIndex = null) {
+        if (!graphicGrid || !portfolioData.graphicDesign) return;
+
+        if (catIndex === null) {
+            // Level 0: Show category folders (brand identity, logo)
+            let html = '';
+            portfolioData.graphicDesign.forEach((cat, ci) => {
+                const count = cat.projects.reduce((acc, p) => acc + p.images.length, 0);
+                html += `<div class="folder-card glass-card hover-glow" onclick="drillGraphic(${ci})">
+                    <i class="fas fa-folder-open folder-icon"></i>
+                    <h4>${cat.category}</h4>
+                    <p>${cat.projects.length} project${cat.projects.length !== 1 ? 's' : ''} · ${count} images</p>
+                </div>`;
             });
-            graphicGrid.innerHTML = graphicHTML;
-        }
+            graphicGrid.innerHTML = `<div class="folder-grid">${html}</div>`;
 
-        // Render Video Edits Grid
+        } else if (projIndex === null) {
+            // Level 1: Show project folders inside a category
+            const cat = portfolioData.graphicDesign[catIndex];
+            let html = `<div class="folder-breadcrumb">
+                <span class="breadcrumb-link" onclick="drillGraphic()">Graphic Design</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>${cat.category}</span></div>
+            <div class="folder-grid">`;
+            cat.projects.forEach((proj, pi) => {
+                html += `<div class="folder-card glass-card hover-glow" onclick="drillGraphic(${catIndex}, ${pi})">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h4>${proj.name}</h4>
+                    <p>${proj.images.length} image${proj.images.length !== 1 ? 's' : ''}</p>
+                </div>`;
+            });
+            html += `</div>`;
+            graphicGrid.innerHTML = html;
+
+        } else {
+            // Level 2: Show all images in a project
+            const cat = portfolioData.graphicDesign[catIndex];
+            const proj = cat.projects[projIndex];
+            let html = `<div class="folder-breadcrumb">
+                <span class="breadcrumb-link" onclick="drillGraphic()">Graphic Design</span>
+                <i class="fas fa-chevron-right"></i>
+                <span class="breadcrumb-link" onclick="drillGraphic(${catIndex})">${cat.category}</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>${proj.name}</span></div>
+            <div class="image-grid">`;
+            proj.images.forEach(img => {
+                const src = escStr(img.path);
+                const name = escStr(img.file.replace(/\.[^.]+$/, ''));
+                html += `<div class="gallery-item" onclick="openModal('${src}', '${name}', '${escStr(proj.name)}')">
+                    <img src="${img.path}" alt="${img.file}" loading="lazy">
+                    <div class="item-overlay"></div>
+                    <div class="item-info"><h4>${img.file.replace(/\.[^.]+$/, '')}</h4></div>
+                </div>`;
+            });
+            html += `</div>`;
+            graphicGrid.innerHTML = html;
+        }
+    }
+
+    window.drillGraphic = function (ci, pi) {
+        renderGraphicDesign(ci !== undefined ? ci : null, pi !== undefined ? pi : null);
+    };
+
+    // ---- UX/UI: Project folders → Image grid ----
+    const uxGrid = document.getElementById('ux-ui-grid');
+
+    function renderUxUi(projIndex = null) {
+        if (!uxGrid || !portfolioData.uxUi) return;
+
+        if (projIndex === null) {
+            // Level 0: Project folders
+            let html = '';
+            portfolioData.uxUi.forEach((proj, pi) => {
+                const cover = proj.images[0] ? proj.images[0].path : '';
+                html += `<div class="folder-card glass-card hover-glow" onclick="drillUx(${pi})" ${cover ? `style="background-image:url('${cover}');background-size:cover;background-position:center;"` : ''}>
+                    <div class="folder-card-overlay"></div>
+                    <i class="fas fa-mobile-alt folder-icon" style="position:relative;z-index:2;"></i>
+                    <h4 style="position:relative;z-index:2;">${proj.name}</h4>
+                    <p style="position:relative;z-index:2;">${proj.images.length} screen${proj.images.length !== 1 ? 's' : ''}</p>
+                </div>`;
+            });
+            uxGrid.innerHTML = `<div class="folder-grid">${html}</div>`;
+        } else {
+            const proj = portfolioData.uxUi[projIndex];
+            let html = `<div class="folder-breadcrumb">
+                <span class="breadcrumb-link" onclick="drillUx()">UX/UI Projects</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>${proj.name}</span></div>
+            <div class="image-grid">`;
+            proj.images.forEach(img => {
+                const src = escStr(img.path);
+                const name = escStr(img.file.replace(/\.[^.]+$/, ''));
+                html += `<div class="gallery-item" onclick="openModal('${src}', '${name}', '${escStr(proj.name)}')">
+                    <img src="${img.path}" alt="${img.file}" loading="lazy">
+                    <div class="item-overlay"></div>
+                    <div class="item-info"><h4>${img.file.replace(/\.[^.]+$/, '')}</h4></div>
+                </div>`;
+            });
+            html += `</div>`;
+            uxGrid.innerHTML = html;
+        }
+    }
+
+    window.drillUx = function (pi) { renderUxUi(pi !== undefined ? pi : null); };
+
+    // ---- VIDEO EDITS ----
+    function renderVideos() {
         const videoGrid = document.getElementById('video-edits-grid');
-        if (videoGrid && portfolioData.videos) {
-            let videoHTML = '';
-            portfolioData.videos.forEach(item => {
-                const title = item.title.replace(/'/g, "\\'");
-                const desc = item.description.replace(/'/g, "\\'");
-                videoHTML += `
-                    <div class="video-card glass-card" onclick="openVideoModal('${item.videoSrc}', '${title}', '${desc}')" style="cursor:pointer;">
-                        <div class="video-thumbnail">
-                            <div class="play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-                                <i class="fas fa-play" style="font-size:2.5rem;color:#00eaff;text-shadow:0 0 20px rgba(0,234,255,0.8);"></i>
-                            </div>
-                        </div>
-                        <div class="item-info">
-                            <h4>${item.title}</h4>
-                            <p>${item.description}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            videoGrid.innerHTML = videoHTML;
-        }
+        if (!videoGrid || !portfolioData.videos) return;
+        let html = '';
+        portfolioData.videos.forEach(item => {
+            const src = escStr(item.path);
+            const name = escStr(item.name);
+            html += `<div class="video-card glass-card" onclick="openVideoModal('${src}', '${name}', 'Video Edit')" style="cursor:pointer;">
+                <div class="video-thumbnail">
+                    <div class="play-btn-center"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="item-info" style="position:static;opacity:1;transform:none;padding:15px;">
+                    <h4>${item.name}</h4>
+                    <p>Video Edit</p>
+                </div>
+            </div>`;
+        });
+        videoGrid.innerHTML = html;
     }
 
     // Call render once on load
