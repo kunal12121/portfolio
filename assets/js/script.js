@@ -5,18 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const htmlEl = document.documentElement;
     const splitLanding = document.getElementById('split-landing');
     const mainApp = document.getElementById('main-app');
-    
+
     // Buttons & Toggles
     const btnBusiness = document.getElementById('btn-business');
     const btnCreative = document.getElementById('btn-creative');
     const modeToggle = document.getElementById('mode-toggle');
     const labelBusiness = document.getElementById('label-business');
     const labelCreative = document.getElementById('label-creative');
-    
+
     // Mode Sections
     const secBusiness = document.getElementById('business-content');
     const secCreative = document.getElementById('creative-content');
-    
+
     // Dynamic Header Elements
     const heroTitle = document.getElementById('hero-title');
     const heroSubtitle = document.getElementById('hero-subtitle');
@@ -31,53 +31,53 @@ document.addEventListener('DOMContentLoaded', () => {
     function enterMode(mode) {
         currentMode = mode;
         htmlEl.setAttribute('data-theme', mode);
-        
+
         // Hide Landing, Show Main App
         splitLanding.style.opacity = '0';
         setTimeout(() => {
             splitLanding.style.display = 'none';
             mainApp.classList.remove('hidden');
-            
+
             // Trigger reveals after app is visible
             setTimeout(() => initializeObservers(), 100);
-            
+
         }, 800); // Wait for CSS fade out
-        
+
         applyModeContent(mode);
     }
 
     function applyModeContent(mode) {
         // Toggle Switch State
         modeToggle.checked = (mode === 'creative');
-        
+
         if (mode === 'business') {
             labelBusiness.classList.add('active');
             labelCreative.classList.remove('active');
-            
+
             secBusiness.classList.remove('hidden-section');
             secCreative.classList.add('hidden-section');
-            
+
             heroTitle.innerText = "KUNAL JANGID";
             heroSubtitle.innerText = "Strategic Operations Manager & Systems Optimizer";
-            
+
             navPortfolioLink.style.display = 'none';
             navExperienceLink.style.display = 'block';
 
             // Ensure Particle memory is cleared/paused if we want perfect performance
             // but for now, CSS opacity handles hiding it.
-            
+
         } else if (mode === 'creative') {
             labelCreative.classList.add('active');
             labelBusiness.classList.remove('active');
-            
+
             secCreative.classList.remove('hidden-section');
             secBusiness.classList.add('hidden-section');
-            
+
             heroTitle.innerText = "KUNAL JANGID";
             heroTitle.classList.add('glitch-text');
             heroTitle.setAttribute('data-text', 'KUNAL JANGID');
             heroSubtitle.innerText = "Multidisciplinary Designer & Digital Visualizer";
-            
+
             navPortfolioLink.style.display = 'block';
             navExperienceLink.style.display = 'none';
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 particlesInitialized = true;
             }
         }
-        
+
         // Reset scroll strictly to top when switching major modes
         window.scrollTo(0, 0);
     }
@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
         height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
-        
+
         particles = [];
         const particleCount = Math.floor((width * height) / 15000);
-        
+
         for (let i = 0; i < particleCount; i++) {
             particles.push({
                 x: Math.random() * width,
@@ -137,31 +137,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentMode !== 'creative') {
             // Pause animation loop if not in creative mode
             requestAnimationFrame(drawParticles);
-            return; 
+            return;
         }
 
         ctx.clearRect(0, 0, width, height);
         ctx.fillStyle = '#00eaff';
-        
+
         particles.forEach((p, i) => {
             p.x += p.vx;
             p.y += p.vy;
-            
+
             if (p.x < 0) p.x = width;
             if (p.x > width) p.x = 0;
             if (p.y < 0) p.y = height;
             if (p.y > height) p.y = 0;
-            
+
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             ctx.fill();
-            
+
             for (let j = i + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dx = p.x - p2.x;
                 const dy = p.y - p2.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (distance < 100) {
                     ctx.strokeStyle = `rgba(0, 234, 255, ${0.15 - distance / 666})`;
                     ctx.lineWidth = 0.5;
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('resize', () => {
-        if(particlesInitialized) {
+        if (particlesInitialized) {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(initCanvas, 200);
         }
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- SCROLL INTERACTIONS ----
     const progressBar = document.querySelector('.scroll-progress');
     window.addEventListener('scroll', () => {
-        if(currentMode === 'landing') return;
+        if (currentMode === 'landing') return;
         const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrollAmount = window.scrollY;
         progressBar.style.width = `${(scrollAmount / docHeight) * 100}%`;
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
             }
-            if(window.innerWidth <= 768) {
+            if (window.innerWidth <= 768) {
                 navContainer.classList.remove('active');
             }
         });
@@ -226,12 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initializeObservers() {
         const revealElements = document.querySelectorAll('.reveal');
-        
+
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    
+
                     // Counters (Creative Stats)
                     if (entry.target.id === 'summary-creative' && !countersStarted && currentMode === 'creative') {
                         countersStarted = true;
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const duration = 2000;
                             const step = target / (duration / 16);
                             let current = 0;
-                            
+
                             const updateCounter = () => {
                                 current += step;
                                 if (current < target) {
@@ -270,25 +270,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---- CREATIVE PORTFOLIO MODAL ----
-    const modal = document.getElementById('image-modal');
-    if(modal) {
+    const imageModal = document.getElementById('image-modal');
+    const videoModal = document.getElementById('video-modal');
+
+    if (imageModal) {
         const modalImg = document.getElementById('modal-img');
         const captionText = document.getElementById('caption');
         const closeBtn = document.querySelector('.close-modal');
 
-        window.openModal = function(imgId, title, desc) {
-            const img = document.getElementById(imgId);
-            if (img && currentMode === 'creative') {
-                modal.style.display = 'block';
-                modalImg.src = img.src;
-                captionText.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
-            }
+        window.openModal = function (src, title, desc) {
+            if (currentMode !== 'creative') return;
+            modalImg.src = src;
+            captionText.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+            imageModal.classList.add('open');
         };
 
-        closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
-        modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+        closeBtn.addEventListener('click', () => { imageModal.classList.remove('open'); modalImg.src = ''; });
+        imageModal.addEventListener('click', (e) => { if (e.target === imageModal) { imageModal.classList.remove('open'); modalImg.src = ''; } });
     }
-    
+
+    if (videoModal) {
+        const modalVideo = document.getElementById('modal-video');
+        const videoCaption = document.getElementById('video-caption');
+        const closeVideoBtn = document.querySelector('.close-video-modal');
+
+        window.openVideoModal = function (src, title, desc) {
+            if (currentMode !== 'creative') return;
+            modalVideo.src = src;
+            videoCaption.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+            videoModal.classList.add('open');
+            modalVideo.play();
+        };
+
+        closeVideoBtn.addEventListener('click', () => { videoModal.classList.remove('open'); modalVideo.pause(); modalVideo.src = ''; });
+        videoModal.addEventListener('click', (e) => { if (e.target === videoModal) { videoModal.classList.remove('open'); modalVideo.pause(); modalVideo.src = ''; } });
+    }
+
     // ---- PORTFOLIO DATA RENDERING ----
     function renderPortfolio() {
         if (typeof portfolioData === 'undefined') {
@@ -301,10 +318,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (graphicGrid && portfolioData.graphics) {
             let graphicHTML = '';
             portfolioData.graphics.forEach(item => {
+                const title = item.title.replace(/'/g, "\\'");
+                const desc = item.description.replace(/'/g, "\\'");
                 graphicHTML += `
-                    <div class="gallery-item glass-card" onclick="openModal('${item.id}', '${item.title}', '${item.description}')">
+                    <div class="gallery-item glass-card" onclick="openModal('${item.image}', '${title}', '${desc}')">
                         <div class="item-overlay"></div>
-                        <img src="${item.image}" alt="${item.category}" id="${item.id}" onerror="this.src='${item.fallbackImage || ''}'">
+                        <img src="${item.image}" alt="${item.category}" loading="lazy" onerror="this.src='${item.fallbackImage || ''}'">
                         <div class="item-info">
                             <h4>${item.title}</h4>
                             <p>${item.category}</p>
@@ -312,13 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             });
-            // Append See All
-            graphicHTML += `
-                <a href="#" class="gallery-item glass-card see-all-card" onclick="event.preventDefault();">
-                    <i class="fas fa-arrow-right"></i>
-                    <span>SEE ALL</span>
-                </a>
-            `;
             graphicGrid.innerHTML = graphicHTML;
         }
 
@@ -327,11 +339,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (videoGrid && portfolioData.videos) {
             let videoHTML = '';
             portfolioData.videos.forEach(item => {
+                const title = item.title.replace(/'/g, "\\'");
+                const desc = item.description.replace(/'/g, "\\'");
                 videoHTML += `
-                    <div class="video-card glass-card">
+                    <div class="video-card glass-card" onclick="openVideoModal('${item.videoSrc}', '${title}', '${desc}')" style="cursor:pointer;">
                         <div class="video-thumbnail">
-                            <img src="${item.thumbnail}" alt="${item.title}" onerror="this.src='${item.fallbackThumbnail || ''}'">
-                            <div class="play-btn"><i class="fas fa-play"></i></div>
+                            <div class="play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play" style="font-size:2.5rem;color:#00eaff;text-shadow:0 0 20px rgba(0,234,255,0.8);"></i>
+                            </div>
                         </div>
                         <div class="item-info">
                             <h4>${item.title}</h4>
@@ -340,13 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             });
-            // Append See All
-            videoHTML += `
-                <a href="#" class="video-card glass-card see-all-card" onclick="event.preventDefault();">
-                    <i class="fas fa-arrow-right"></i>
-                    <span>SEE ALL</span>
-                </a>
-            `;
             videoGrid.innerHTML = videoHTML;
         }
     }
