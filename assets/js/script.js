@@ -232,25 +232,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
 
-                    // Counters (Creative Stats)
+                    // Counters (Creative Stats) — values auto-read from portfolioData.counts
                     if (entry.target.id === 'summary-creative' && !countersStarted && currentMode === 'creative') {
                         countersStarted = true;
-                        statCounters.forEach(counter => {
-                            const target = +counter.getAttribute('data-target');
-                            const duration = 2000;
-                            const step = target / (duration / 16);
+                        const counts = (typeof portfolioData !== 'undefined' && portfolioData.counts) ? portfolioData.counts : {};
+                        const mapping = [
+                            { id: 'count-graphic', value: counts.graphicDesign || 0 },
+                            { id: 'count-video', value: counts.videoEdits || 0 },
+                            { id: 'count-ui', value: counts.uiConcepts || 0 }
+                        ];
+                        mapping.forEach(({ id, value }) => {
+                            const el = document.getElementById(id);
+                            if (!el) return;
+                            const duration = 1800;
+                            const step = value / (duration / 16);
                             let current = 0;
-
-                            const updateCounter = () => {
+                            const tick = () => {
                                 current += step;
-                                if (current < target) {
-                                    counter.innerText = Math.ceil(current);
-                                    requestAnimationFrame(updateCounter);
+                                if (current < value) {
+                                    el.innerText = Math.ceil(current);
+                                    requestAnimationFrame(tick);
                                 } else {
-                                    counter.innerText = target + (target > 50 ? '+' : '');
+                                    el.innerText = value + '+';
                                 }
                             };
-                            updateCounter();
+                            tick();
                         });
                     }
 

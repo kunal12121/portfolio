@@ -2,6 +2,12 @@
 // Run "node generate_portfolio.js" to regenerate when adding new assets.
 
 const portfolioData = {
+    // Auto-computed counts — updated every time you run generate_portfolio.js
+    counts: {
+        graphicDesign: 36,
+        videoEdits: 9,
+        uiConcepts: 4
+    },
     graphicDesign: [
     {
         "category": "brand identity",
