@@ -508,10 +508,8 @@ input:checked+.slider:before {
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    margin: 60px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
